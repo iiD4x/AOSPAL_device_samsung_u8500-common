@@ -55,11 +55,10 @@ BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_CMDLINE := "console=ttySAC2,115200 consoleblank=0 androidboot.selinux=permissive"
 
 # Graphics
-BOARD_EGL_CFG := device/samsung/u8500-common/configs/egl.cfg
+USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-USE_OPENGL_RENDERER := true
-COMMON_GLOBAL_CFLAGS += -DEGL_NEEDS_FNW
+BOARD_EGL_CFG := device/samsung/u8500-common/configs/egl.cfg
 
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -89,9 +88,9 @@ BOARD_RIL_CLASS := ../../../device/samsung/u8500-common/ril/
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
-COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB -DMR1_AUDIO_BLOB
 BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP := true
+COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB -DMR1_AUDIO_BLOB
 
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true
@@ -122,7 +121,3 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.montblanc
 
 # Misc
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
-
-# Custom releasetools - disabled
-# TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/u8500-common/releasetools/u8500_ota_from_target_files
-# TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/u8500-common/releasetools/u8500_img_from_target_files

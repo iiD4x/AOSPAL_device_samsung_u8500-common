@@ -30,7 +30,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
     persist.sys.strictmode.disable=1 \
-    hwui.render_dirty_regions=false \
+    debug.sf.hw=1 \
+    debug.hwui.render_dirty_regions=false \
     ro.zygote.disable_gl_preload=1 \
     ro.bq.gpu_to_cpu_unsupported=1
 
@@ -57,10 +58,7 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/bluetooth/01bt:system/etc/init.d/01bt \
     $(COMMON_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
-PRODUCT_PACKAGES += \
-    brcm_patchram_plus
 
 # STE
 PRODUCT_COPY_FILES += \
@@ -85,10 +83,6 @@ PRODUCT_PACKAGES += \
     libtinyalsa
 
 $(call inherit-product, device/samsung/u8500-common/opensource/libasound/alsa-lib-products.mk)
-
-# GPS
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/sirfgps.conf:system/etc/sirfgps.conf
 
 # Montblanc libs
 PRODUCT_PACKAGES += \
